@@ -67,7 +67,7 @@ export default function Home({ data, seed }: Props) {
   const [status, setStatus] = useState<Partial<Status>>({});
   const [urlValue, setUrlValue] = useState<string>("");
   const [message, setMessage] = useState<string | null>(null);
-  const image = data.image[0];
+  const [image] = data.image;
   const upvotes = image.upvotes || 0;
   const downvotes = image.downvotes || 0;
   const hasPopularApproval = upvotes - downvotes > 0;
@@ -75,15 +75,18 @@ export default function Home({ data, seed }: Props) {
     (upvotes / (upvotes + downvotes)) * 100
   );
 
-  const positiveEmojiIndex = Math.floor(seed * positiveEmojis.length);
-  const negativeEmojiIndex = Math.floor(seed * negativeEmojis.length);
+  const getRandomElement = (arr: any[]) => {
+    const index = Math.floor(seed * arr.length);
+    return arr[index];
+  };
 
   const handleVote = async (vote: boolean) => {
     setStatus({ ...status, voted: true, vote });
 
+    const { id } = image;
     await fetch("/api/vote", {
       method: "POST",
-      body: JSON.stringify({ id: image.id, vote }),
+      body: JSON.stringify({ id, vote }),
     });
   };
 
@@ -126,14 +129,14 @@ export default function Home({ data, seed }: Props) {
               className={styles.voteButton}
               style={{ backgroundColor: "green" }}
             >
-              Yes! {positiveEmojis[positiveEmojiIndex]}
+              Yes! {getRandomElement(positiveEmojis)}
             </div>
             <div
               onClick={() => handleVote(false)}
               className={styles.voteButton}
               style={{ backgroundColor: "#d00000" }}
             >
-              No {negativeEmojis[negativeEmojiIndex]}
+              No {getRandomElement(negativeEmojis)}
             </div>
           </div>
         )}
@@ -170,7 +173,7 @@ export default function Home({ data, seed }: Props) {
         {message && <div>{message}</div>}
 
         {!status.added && (
-          <div className={styles.addWrapper}>
+          <form onSubmit={handleAdd} className={styles.addWrapper}>
             <input
               type="url"
               style={{
@@ -179,17 +182,17 @@ export default function Home({ data, seed }: Props) {
                 outline: "none",
                 border: "1px solid #0070f3",
               }}
+              required
               value={urlValue}
               onChange={(e) => setUrlValue(e.target.value)}
             />
-            <div
+            <input
+              type="submit"
               className={styles.voteButton}
               style={{ backgroundColor: "#0070f3" }}
-              onClick={handleAdd}
-            >
-              Add a picture URL
-            </div>
-          </div>
+              value="Add a picture URL"
+            />
+          </form>
         )}
       </main>
 

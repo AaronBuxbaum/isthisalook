@@ -65,6 +65,7 @@
   align-items: center;
   color: white;
   cursor: pointer;
+  border: none;
 }
 
 .addWrapper {
