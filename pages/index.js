@@ -98,7 +98,8 @@ export default function Home({ data, seed }) {
           {status.vote === true && !hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
           {status.vote === false && hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
           {status.vote === false && !hasPopularApproval && percentageApproval < 100 && <div>{100 - percentageApproval}% of voters agree with you -- this is, in fact, Not A Look!</div>}
-        </div>}
+        </div>
+        }
         {status.added && <div>Thanks for adding an image!</div>}
         {message && <div>{message}</div>}
 
