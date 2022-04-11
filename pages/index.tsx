@@ -130,6 +130,7 @@ export default function Home({ data, seed }: Props) {
       <main className={styles.main}>
         <h1 className={styles.title}>Is This A Look?</h1>
 
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={image.url} alt="A Look?" className={styles.image} />
 
         {!status.voted && (
@@ -153,7 +154,6 @@ export default function Home({ data, seed }: Props) {
 
         {status.voted && (
           <div>
-            Thanks for your vote!
             {status.vote === true &&
               hasPopularApproval &&
               percentageApproval > 0 && (
@@ -163,10 +163,10 @@ export default function Home({ data, seed }: Props) {
                 </div>
               )}
             {status.vote === true && !hasPopularApproval && (
-              <div>{percentageApproval}% of voters disagree with you!</div>
+              <div>Your taste is questionable; only {percentageApproval}% of voters agree with you!</div>
             )}
             {status.vote === false && hasPopularApproval && (
-              <div>{percentageApproval}% of voters disagree with you!</div>
+              <div>Your taste is questionable; {percentageApproval}% of voters disagree with you!</div>
             )}
             {status.vote === false &&
               !hasPopularApproval &&
