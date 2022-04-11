@@ -20,6 +20,8 @@ export async function getServerSideProps() {
         image: random_image(args: {seed: "${seed}"}) {
           id
           url
+          upvotes
+          downvotes
         }
       }
     `
@@ -33,6 +35,10 @@ export default function Home({ data }) {
   const [urlValue, setUrlValue] = useState();
   const [message, setMessage] = useState(null);
   const image = data.image[0];
+  const upvotes = image.upvotes || 0;
+  const downvotes = image.downvotes || 0;
+  const hasPopularApproval = upvotes - downvotes > 0;
+  const percentageApproval = Math.round((upvotes / (upvotes + downvotes)) * 100);
 
   const handleVote = async (vote) => {
     setStatus({ ...status, voted: true, vote });
@@ -81,7 +87,12 @@ export default function Home({ data }) {
             <div onClick={() => handleVote(false)} className={styles.voteButton} style={{ backgroundColor: '#d00000' }}>No 😔</div>
           </div>}
 
-        {status.voted && <div>Thanks for your vote!</div>}
+        {status.voted && <div>Thanks for your vote! 
+            {status.vote === true && hasPopularApproval && percentageApproval > 0 && <div>{percentageApproval}% of voters agree with you -- this is, in fact, A Look!</div>}
+            {status.vote === true && !hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
+            {status.vote === false && hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
+            {status.vote === false && !hasPopularApproval && percentageApproval < 100 && <div>{100 - percentageApproval}% of voters agree with you -- this is, in fact, Not A Look!</div>}
+          </div>}
         {status.added && <div>Thanks for adding an image!</div>}
         {message && <div>{message}</div>}
 
