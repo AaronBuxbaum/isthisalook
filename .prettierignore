@@ -1,0 +1,7 @@
+.yarn
+.pnp.*
+yarn.lock
+.next
+.vercel
+.yarn
+tsconfig.tsbuildinfo
