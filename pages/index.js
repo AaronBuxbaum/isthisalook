@@ -30,7 +30,7 @@ export async function getServerSideProps() {
   return { props: { data, seed } }
 }
 
-const positiveEmojis = ["👏","👍","✌","👌","🤗","🆗","😄","🌈","💙","✨","🌤", "🙌", "😉", "🫦"];
+const positiveEmojis = ["👏", "👍", "✌", "👌", "🤗", "🆗", "😄", "🌈", "💙", "✨", "🌤", "🙌", "😉", "🫦"];
 const negativeEmojis = ["🙈", "👎", "📉", "🙅", "😫", "🎭"];
 
 export default function Home({ data, seed }) {
@@ -86,27 +86,32 @@ export default function Home({ data, seed }) {
         <h1 className={styles.title}>
           Is This A Look?
         </h1>
+
         <img src={image.url} alt="A Look?" className={styles.image} />
+
         {!status.voted &&
           <div className={styles.buttons}>
             <div onClick={() => handleVote(true)} className={styles.voteButton} style={{ backgroundColor: 'green' }}>Yes! {positiveEmojis[positiveEmojiIndex]}</div>
             <div onClick={() => handleVote(false)} className={styles.voteButton} style={{ backgroundColor: '#d00000' }}>No {negativeEmojis[negativeEmojiIndex]}</div>
-          </div>}
-
-        {status.voted && <div>Thanks for your vote!
-          {status.vote === true && hasPopularApproval && percentageApproval > 0 && <div>{percentageApproval}% of voters agree with you -- this is, in fact, A Look!</div>}
-          {status.vote === true && !hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
-          {status.vote === false && hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
-          {status.vote === false && !hasPopularApproval && percentageApproval < 100 && <div>{100 - percentageApproval}% of voters agree with you -- this is, in fact, Not A Look!</div>}
-        </div>
+          </div>
         }
+
+        {status.voted &&
+          <div>Thanks for your vote!
+            {status.vote === true && hasPopularApproval && percentageApproval > 0 && <div>{percentageApproval}% of voters agree with you -- this is, in fact, A Look!</div>}
+            {status.vote === true && !hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
+            {status.vote === false && hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
+            {status.vote === false && !hasPopularApproval && percentageApproval < 100 && <div>{100 - percentageApproval}% of voters agree with you -- this is, in fact, Not A Look!</div>}
+          </div>
+        }
+
         {status.added && <div>Thanks for adding an image!</div>}
         {message && <div>{message}</div>}
 
         {!status.added &&
           <div className={styles.addWrapper}>
             <input type="url" style={{ width: 300, borderRight: 'none', outline: 'none', border: '1px solid #0070f3' }} value={urlValue} onChange={(e) => setUrlValue(e.target.value)} />
-            <div className={styles.voteButton} style={{ backgroundColor: '#0070f3' }} onClick={handleAdd}>Add a picture</div>
+            <div className={styles.voteButton} style={{ backgroundColor: '#0070f3' }} onClick={handleAdd}>Add a picture URL</div>
           </div>
         }
       </main>
