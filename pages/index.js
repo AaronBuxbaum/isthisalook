@@ -18,6 +18,7 @@ export async function getServerSideProps() {
     query: gql`
       query GetImage {
         image: random_image(args: {seed: "${seed}"}) {
+          id
           score
           url
           views
@@ -32,13 +33,36 @@ export async function getServerSideProps() {
 export default function Home({ data }) {
   const [status, setStatus] = useState({});
   const [urlValue, setUrlValue] = useState();
+  const [message, setMessage] = useState(null);
+  const image = data.image[0];
 
   const handleVote = async (vote) => {
     setStatus({ ...status, voted: true, vote });
+
+    await fetch("/api/vote", {
+      method: "POST",
+      body: JSON.stringify({ id: image.id, vote })
+    });
   }
 
-  const handleAdd = () => {
-    setStatus({ ...status, added: true });
+  const handleAdd = async () => {
+    setMessage(null);
+
+    if (![".png", ".jpg", ".gif", ".jpeg"].some((v) => urlValue.endsWith(v))) {
+      setMessage("Invalid image type")
+      return;
+    }
+
+    try {
+      const request = await fetch("/api/addImage", {
+        method: "POST",
+        body: JSON.stringify({ url: urlValue })
+      });
+      if (!request.ok) throw new Error();
+      setStatus({ ...status, added: true });
+    } catch (e) {
+      setMessage("A problem occurred")
+    }
   }
 
   return (
@@ -52,7 +76,7 @@ export default function Home({ data }) {
         <h1 className={styles.title}>
           Is This A Look?
         </h1>
-        <img src={data.image[0].url} alt="A Look?" className={styles.image} />
+        <img src={image.url} alt="A Look?" className={styles.image} />
         {!status.voted &&
           <div className={styles.buttons}>
             <div onClick={() => handleVote(true)} className={styles.voteButton} style={{ backgroundColor: 'green' }}>Yes! 👜</div>
@@ -61,6 +85,7 @@ export default function Home({ data }) {
 
         {status.voted && <div>Thanks for your vote!</div>}
         {status.added && <div>Thanks for adding an image!</div>}
+        {message && <div>{message}</div>}
 
         {!status.added &&
           <div className={styles.addWrapper}>
