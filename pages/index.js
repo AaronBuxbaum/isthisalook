@@ -27,10 +27,13 @@ export async function getServerSideProps() {
     `
   });
 
-  return { props: { data } }
+  return { props: { data, seed } }
 }
 
-export default function Home({ data }) {
+const positiveEmojis = ["👏","👍","✌","👌","🤗","🆗","😄","🌈","💙","✨","🌤", "🙌", "😉", "🫦"];
+const negativeEmojis = ["🙈", "👎", "📉", "🙅", "😫", "🎭"];
+
+export default function Home({ data, seed }) {
   const [status, setStatus] = useState({});
   const [urlValue, setUrlValue] = useState();
   const [message, setMessage] = useState(null);
@@ -39,6 +42,9 @@ export default function Home({ data }) {
   const downvotes = image.downvotes || 0;
   const hasPopularApproval = upvotes - downvotes > 0;
   const percentageApproval = Math.round((upvotes / (upvotes + downvotes)) * 100);
+
+  const positiveEmojiIndex = Math.floor(seed * positiveEmojis.length);
+  const negativeEmojiIndex = Math.floor(seed * negativeEmojis.length);
 
   const handleVote = async (vote) => {
     setStatus({ ...status, voted: true, vote });
@@ -83,16 +89,16 @@ export default function Home({ data }) {
         <img src={image.url} alt="A Look?" className={styles.image} />
         {!status.voted &&
           <div className={styles.buttons}>
-            <div onClick={() => handleVote(true)} className={styles.voteButton} style={{ backgroundColor: 'green' }}>Yes! 👜</div>
-            <div onClick={() => handleVote(false)} className={styles.voteButton} style={{ backgroundColor: '#d00000' }}>No 😔</div>
+            <div onClick={() => handleVote(true)} className={styles.voteButton} style={{ backgroundColor: 'green' }}>Yes! {positiveEmojis[positiveEmojiIndex]}</div>
+            <div onClick={() => handleVote(false)} className={styles.voteButton} style={{ backgroundColor: '#d00000' }}>No {negativeEmojis[negativeEmojiIndex]}</div>
           </div>}
 
-        {status.voted && <div>Thanks for your vote! 
-            {status.vote === true && hasPopularApproval && percentageApproval > 0 && <div>{percentageApproval}% of voters agree with you -- this is, in fact, A Look!</div>}
-            {status.vote === true && !hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
-            {status.vote === false && hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
-            {status.vote === false && !hasPopularApproval && percentageApproval < 100 && <div>{100 - percentageApproval}% of voters agree with you -- this is, in fact, Not A Look!</div>}
-          </div>}
+        {status.voted && <div>Thanks for your vote!
+          {status.vote === true && hasPopularApproval && percentageApproval > 0 && <div>{percentageApproval}% of voters agree with you -- this is, in fact, A Look!</div>}
+          {status.vote === true && !hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
+          {status.vote === false && hasPopularApproval && <div>{percentageApproval}% of voters disagree with you!</div>}
+          {status.vote === false && !hasPopularApproval && percentageApproval < 100 && <div>{100 - percentageApproval}% of voters agree with you -- this is, in fact, Not A Look!</div>}
+        </div>}
         {status.added && <div>Thanks for adding an image!</div>}
         {message && <div>{message}</div>}
 
