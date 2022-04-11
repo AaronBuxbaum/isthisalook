@@ -19,9 +19,7 @@ export async function getServerSideProps() {
       query GetImage {
         image: random_image(args: {seed: "${seed}"}) {
           id
-          score
           url
-          views
         }
       }
     `
