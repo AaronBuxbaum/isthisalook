@@ -19,6 +19,12 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  font-size: 11px;
+}
+
+.image {
+  max-height: 500px;
+  object-fit: contain;
 }
 
 .footer a {
@@ -43,6 +49,28 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.voteButton {
+  display: flex;
+  width: 200px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+
+.addWrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 75px;
 }
 
 .title,
