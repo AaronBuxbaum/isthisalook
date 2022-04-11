@@ -3,6 +3,7 @@ import { gql } from "@apollo/client";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
 import client from "../utils/graphql-client";
+import type { GetServerSideProps } from "next";
 
 interface Query {
   data: {
@@ -15,13 +16,13 @@ interface Query {
   };
 }
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const seed = Math.random();
 
   const { data } = await client.query<Query>({
     query: gql`
       query GetImage {
-        image: random_image(args: {seed: "${seed}"}) {
+        image: random_image(args: {seed: "${seed}"}, limit: 1) {
           id
           url
           upvotes
@@ -32,7 +33,7 @@ export async function getServerSideProps() {
   });
 
   return { props: { data, seed } };
-}
+};
 
 const positiveEmojis = [
   "👏",
@@ -67,7 +68,12 @@ export default function Home({ data, seed }: Props) {
   const [status, setStatus] = useState<Partial<Status>>({});
   const [urlValue, setUrlValue] = useState<string>("");
   const [message, setMessage] = useState<string | null>(null);
+
   const [image] = data.image;
+  if (!image) {
+    return <div>No image found</div>;
+  }
+
   const upvotes = image.upvotes || 0;
   const downvotes = image.downvotes || 0;
   const hasPopularApproval = upvotes - downvotes > 0;
@@ -78,6 +84,10 @@ export default function Home({ data, seed }: Props) {
   const getRandomElement = (arr: any[]) => {
     const index = Math.floor(seed * arr.length);
     return arr[index];
+  };
+
+  const viewNext = () => {
+    window.location.reload();
   };
 
   const handleVote = async (vote: boolean) => {
@@ -171,6 +181,16 @@ export default function Home({ data, seed }: Props) {
 
         {status.added && <div>Thanks for adding an image!</div>}
         {message && <div>{message}</div>}
+
+        {status.voted && (
+          <div
+            onClick={viewNext}
+            className={styles.voteButton}
+            style={{ backgroundColor: "darkgrey", marginTop: 10 }}
+          >
+            View Next ⏭
+          </div>
+        )}
 
         {!status.added && (
           <form onSubmit={handleAdd} className={styles.addWrapper}>
