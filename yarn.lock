@@ -107,12 +107,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:12.1.4":
-  version: 12.1.4
-  resolution: "@next/eslint-plugin-next@npm:12.1.4"
+"@next/eslint-plugin-next@npm:12.1.5":
+  version: 12.1.5
+  resolution: "@next/eslint-plugin-next@npm:12.1.5"
   dependencies:
     glob: 7.1.7
-  checksum: 6908d3ea066cc31a2353a198eb019bccb1158f032df8607568bb5ca17f84d271871e916e426f981eab08f2dbbc3df7a0ab00de2a8f14ed323492417e4f9d7903
+  checksum: fe070fbd42f699b0e158d2ea276569ad686343c78fb698c1835cd587862903bc2d146e04dd747495e186019cff685f36120b3953afce8b0c9f0fb43cd58798a7
   languageName: node
   linkType: hard
 
@@ -273,10 +273,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^17.0.23":
-  version: 17.0.23
-  resolution: "@types/node@npm:17.0.23"
-  checksum: a3517554737cbb042e76c30d0e5482192ac4d9bea0eeb086e2622d9cabf460a0eb52a696b99fcd18e7fcc93c96db6cc7ae507f6608f256ef0b5c1d8c87a5a470
+"@types/node@npm:*, @types/node@npm:^17.0.24":
+  version: 17.0.24
+  resolution: "@types/node@npm:17.0.24"
+  checksum: 9e7c4f863601b2430b4c2429a89935f22eba692956f5013c90a4c7fb0e1401ed8add8c4307453c5d6b8b985384500f8c3f644427ab88632640cc396159af479a
   languageName: node
   linkType: hard
 
@@ -287,14 +287,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.0.1":
-  version: 18.0.1
-  resolution: "@types/react@npm:18.0.1"
+"@types/react@npm:^18.0.5":
+  version: 18.0.5
+  resolution: "@types/react@npm:18.0.5"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: ede927ed3766fef5fec513fe75e79180bb3c97d21ca7707321e969193c596bc4a531160238546a845e4131df02ec9be7803277a268bc270156362d16b29b4ffb
+  checksum: 70d3336d43ef25509fa89ef3278f57fdf1945fc921e69b7890a78ab9a52a55ee38e2f13aa71eb4f6032b7311e7557860ce8836c1acf3028304989571c9736a96
   languageName: node
   linkType: hard
 
@@ -1001,11 +1001,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^12.1.4":
-  version: 12.1.4
-  resolution: "eslint-config-next@npm:12.1.4"
+"eslint-config-next@npm:^12.1.5":
+  version: 12.1.5
+  resolution: "eslint-config-next@npm:12.1.5"
   dependencies:
-    "@next/eslint-plugin-next": 12.1.4
+    "@next/eslint-plugin-next": 12.1.5
     "@rushstack/eslint-patch": 1.0.8
     "@typescript-eslint/parser": 5.10.1
     eslint-import-resolver-node: 0.3.4
@@ -1021,7 +1021,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 913a1b938a35886efebe3c909175ac47b26499d75ddd33cdab4d66eeaac5fdbbad1ef22c601b8f87ef562dee4c2685335fbced356c4a6dc270b7c293a43fd220
+  checksum: 823b50d0c3706b206ab8c9fa62c6580603d7b523b678f1a7dbbb226697c22626e48ee05fab11a8136f82bf6d559d2357e39c90bef3c32d9a167437b0660a9175
   languageName: node
   linkType: hard
 
@@ -2658,10 +2658,10 @@ __metadata:
   dependencies:
     "@apollo/client": ^3.5.10
     "@types/lodash": ^4.14.181
-    "@types/node": ^17.0.23
-    "@types/react": ^18.0.1
+    "@types/node": ^17.0.24
+    "@types/react": ^18.0.5
     eslint: ^8.13.0
-    eslint-config-next: ^12.1.4
+    eslint-config-next: ^12.1.5
     graphql: ^16.3.0
     lodash: ^4.17.21
     next: ^12.1.4
