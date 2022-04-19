@@ -34,8 +34,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@apollo/client", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:3.5.10"],\
-            ["@types/lodash", "npm:4.14.181"],\
-            ["@types/node", "npm:17.0.24"],\
+            ["@types/lodash", "npm:4.14.182"],\
+            ["@types/node", "npm:17.0.25"],\
             ["@types/react", "npm:18.0.5"],\
             ["eslint", "npm:8.13.0"],\
             ["eslint-config-next", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:12.1.5"],\
@@ -379,25 +379,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-keyv-npm-3.1.4-a8082ea56b-e009a2bfb5.zip/node_modules/@types/keyv/",\
           "packageDependencies": [\
             ["@types/keyv", "npm:3.1.4"],\
-            ["@types/node", "npm:17.0.24"]\
+            ["@types/node", "npm:17.0.25"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@types/lodash", [\
-        ["npm:4.14.181", {\
-          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.181-a4e20bcfaf-0d1863d838.zip/node_modules/@types/lodash/",\
+        ["npm:4.14.182", {\
+          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.182-1073aac722-7dd137aa9d.zip/node_modules/@types/lodash/",\
           "packageDependencies": [\
-            ["@types/lodash", "npm:4.14.181"]\
+            ["@types/lodash", "npm:4.14.182"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@types/node", [\
-        ["npm:17.0.24", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-17.0.24-5b16c4ab89-9e7c4f8636.zip/node_modules/@types/node/",\
+        ["npm:17.0.25", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-17.0.25-cd1a2f2374-6a820bd624.zip/node_modules/@types/node/",\
           "packageDependencies": [\
-            ["@types/node", "npm:17.0.24"]\
+            ["@types/node", "npm:17.0.25"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -428,7 +428,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-responselike-npm-1.0.0-85dd08af42-e99fc7cc62.zip/node_modules/@types/responselike/",\
           "packageDependencies": [\
             ["@types/responselike", "npm:1.0.0"],\
-            ["@types/node", "npm:17.0.24"]\
+            ["@types/node", "npm:17.0.25"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -555,7 +555,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@vercel-node-npm-1.14.1-ccc3aa672c-4365ae1900.zip/node_modules/@vercel/node/",\
           "packageDependencies": [\
             ["@vercel/node", "npm:1.14.1"],\
-            ["@types/node", "npm:17.0.24"],\
+            ["@types/node", "npm:17.0.25"],\
             ["@vercel/node-bridge", "npm:2.2.0"],\
             ["ts-node", "virtual:ccc3aa672c958c4eb47ec488681829fea7dd0b9220f174b9afbedd7ac9c62f97254b26a68584311e99a69651f25631adb91b4ba5dbf743df5e4058c5ed959921#npm:8.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.3.4#~builtin<compat/typescript>::version=4.3.4&hash=bda367"]\
@@ -3264,8 +3264,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["root-workspace-0b6124", "workspace:."],\
             ["@apollo/client", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:3.5.10"],\
-            ["@types/lodash", "npm:4.14.181"],\
-            ["@types/node", "npm:17.0.24"],\
+            ["@types/lodash", "npm:4.14.182"],\
+            ["@types/node", "npm:17.0.25"],\
             ["@types/react", "npm:18.0.5"],\
             ["eslint", "npm:8.13.0"],\
             ["eslint-config-next", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:12.1.5"],\
